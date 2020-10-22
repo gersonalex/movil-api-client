@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<div class="container-lg">
+		<h1>Móvil App</h1>
+		<form action="{{ url_for('borrar_movil') }}"  method="POST">
+		  <div class="form-group">
+		    <label style="color: white">Identificador</label>
+		    <input type="text" name="identificador" placeholder="Ejemplo: AAA1" class="form-control" style="width: 500px; margin: 0 auto">
+		  </div>
+		  <button type="submit" class="btn btn-dark">Borrar</button>
+		</form>
+	</div>
+	<a href="/movil/">Volver a menú de móvil</a>
+{% endblock %}

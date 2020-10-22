@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block extra %}
+<style type="text/css">
+
+	.container-lg {
+		text-align: center;
+		/*background-color: green;*/
+		padding: 50px;
+	}
+
+	button {
+		width: 400px;
+		margin-right: 20px;
+		margin-top: 20px;
+	}
+
+</style>
+{% endblock %}
+
+{% block content %}
+	<div class="container-lg">
+		<h1>Móvil App</h1>
+		<button type="button" class="btn btn-dark btn-lg btn-inline"><a href="{{ url_for('movil') }}">Móvil</a></button>
+		<button type="button" class="btn btn-dark btn-lg btn-inline"><a href="{{ url_for('ubicacion') }}">Ubicación</a></button>
+	</div>
+{% endblock %}

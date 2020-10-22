@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<div class="container-lg">
+		<h1>Móvil App</h1>
+		<form action="{{ url_for('registrar_movil') }}"  method="POST">
+		  <div class="form-group">
+		    <label style="color: white">Identificador</label>
+		    <input type="text" name="identificador" placeholder="Ejemplo: AAA1" class="form-control" style="width: 500px; margin: 0 auto">
+		  </div>
+		  <div class="form-group">
+		    <label style="color: white">Tipo</label>
+		    <input type="text" name="tipo" placeholder="Ejemplo: AVION" class="form-control" style="width: 500px; margin: 0 auto">
+		  </div>
+		  <button type="submit" class="btn btn-dark">Crear</button>
+		</form>
+	</div>
+{% endblock %}
