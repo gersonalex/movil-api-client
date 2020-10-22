@@ -67,6 +67,7 @@ def obtener_movil():
 def get_moviles():
 	url = "http://127.0.0.1:8080/movil/rest/movil/"
 	response = requests.get(url).json()
+	print
 	movil_query=[]
 	for x in response:
 		movil_query.append(Movil(x['identificador'], x['tipo']))
