@@ -46,7 +46,7 @@ def ubicacion():
 def registrar_movil():
 	if flask.request.method == 'GET':
 		return render_template('movil/registrar_movil.html')
-	url = "http://localhost:8080/movil/rest/movil"
+	url = "http://127.0.0.1:8080/movil/rest/movil"
 	headers = {'content-type': 'application/json'}
 	movil_dict = Movil(flask.request.form['identificador'], flask.request.form['tipo']).__dict__
 	response = requests.post(url, data=json.dumps(movil_dict), headers=headers)
@@ -57,7 +57,7 @@ def registrar_movil():
 def obtener_movil():
 	if flask.request.method == 'GET':
 		return render_template('movil/obtener_movil.html', search_id = 1)
-	url = "http://localhost:8080/movil/rest/movil/"
+	url = "http://127.0.0.1:8080/movil/rest/movil/"
 	response = requests.get(url+flask.request.form['identificador']).json()
 	movil = Movil(response['identificador'], response['tipo'])
 	return render_template('movil/obtener_movil.html', movil=movil)
@@ -65,7 +65,7 @@ def obtener_movil():
 
 @app.route('/movil/obtener-moviles/')
 def get_moviles():
-	url = "http://localhost:8080/movil/rest/movil/"
+	url = "http://127.0.0.1:8080/movil/rest/movil/"
 	response = requests.get(url).json()
 	movil_query=[]
 	for x in response:
@@ -77,7 +77,7 @@ def get_moviles():
 def borrar_movil():
 	if flask.request.method == 'GET':
 		return render_template('movil/borrar_movil.html')
-	url = "http://localhost:8080/movil/rest/movil/" 
+	url = "http://127.0.0.1:8080/movil/rest/movil/" 
 	response = requests.delete(url+flask.request.form['identificador'])
 	return redirect('/movil/obtener-moviles/')
 
@@ -88,7 +88,7 @@ def borrar_movil():
 def registrar_ubicacion():
 	if flask.request.method == 'GET':
 		return render_template('ubicacion/registrar_ubicacion.html')
-	url = "http://localhost:8080/movil/rest/ubicacion"
+	url = "http://127.0.0.1:8080/movil/rest/ubicacion"
 	headers = {'content-type': 'application/json'}
 	movil_dict = Ubicacion(id=flask.request.form['identificador'], lat=flask.request.form['latitud'], lon=flask.request.form['longitud']).__dict__
 	response = requests.post(url, data=json.dumps(movil_dict), headers=headers)
@@ -99,7 +99,7 @@ def registrar_ubicacion():
 def obtener_ubicacion():
 	if flask.request.method == 'GET':
 		return render_template('ubicacion/obtener_ubicacion.html', search_id = 1)
-	url = "http://localhost:8080/movil/rest/ubicacion/Longitud/"+flask.request.form['longitud']+'/Latitud/'+\
+	url = "http://127.0.0.1:8080/movil/rest/ubicacion/Longitud/"+flask.request.form['longitud']+'/Latitud/'+\
 					flask.request.form['latitud']+'/distancia/'+flask.request.form['distancia']
 	ubicacion_query = []
 	response = requests.get(url).json()
@@ -110,7 +110,7 @@ def obtener_ubicacion():
 
 @app.route('/ubicacion/obtener-ubicaciones', methods=['GET'])
 def obtener_ubicaciones():
-	url = "http://localhost:8080/movil/rest/ubicacion/" 
+	url = "http://127.0.0.1:8080/movil/rest/ubicacion/" 
 	response = requests.get(url).json()
 	ubicacion_query = []
 	for u in response:
@@ -122,6 +122,6 @@ def obtener_ubicaciones():
 def borrar_ubicacion():
 	if flask.request.method == 'GET':
 		return render_template('ubicacion/borrar_ubicacion.html')
-	url = "http://localhost:8080/movil/rest/ubicacion/id/"+flask.request.form['id']
+	url = "http://127.0.0.1:8080/movil/rest/ubicacion/id/"+flask.request.form['id']
 	response = requests.delete(url)
 	return redirect('/ubicacion/obtener-ubicaciones')
